@@ -26,6 +26,12 @@
 ❌ 생성자 대신 `builder`패턴 사용, `setter`프로퍼티 지양   
 → domain, dao, dto 클래스에 `setter`프로퍼티 삭제, `builder`패턴 적용. 그런데 `PostRepository`에서 update 부분 어떻게 처리할지 모르곘음.
 
+❌ 예외처리 안됨
+→ 제목 혹은 내용 없으면 경고창 띄우기
+
+❌ 공통로직 처리필요
+→ 작성시간 표시 등
+
 </details>
 
 
