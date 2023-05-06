@@ -5,6 +5,7 @@ import lombok.Getter;
 
 @Getter
 public class PostEdit {
+
     private String title;
     private String content;
 

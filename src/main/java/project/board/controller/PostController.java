@@ -4,11 +4,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import project.board.request.PostCreate;
+import project.board.request.PostEdit;
 import project.board.response.PostResponse;
 import project.board.service.PostService;
 
@@ -42,9 +40,23 @@ public class PostController {
 
     @PostMapping("/new")
     public String save(@ModelAttribute PostCreate postCreate) {
+        log.info("PostController.save() postCreate={}", postCreate.toString());
         postService.save(postCreate);
         return "redirect:/";
     }
 
     // TODO : Update 기능 추가
+    @GetMapping("/{postId}/edit")
+    public String editForm(@PathVariable("postId") Long postId, Model model) {
+        PostResponse post = postService.findById(postId);
+        model.addAttribute("post", post);
+        return "editForm";
+    }
+
+    @PostMapping("/{postId}/edit")
+    public String update(@PathVariable("postId") Long postId, @ModelAttribute PostEdit postEdit) {
+        log.info("PostController.update() postEdit={}", postEdit.toString());
+        postService.update(postId, postEdit);
+        return "redirect:/{postId}";
+    }
 }

@@ -19,7 +19,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="post : ${posts}" th:onclick="|location.href='@{/{postId}(postId=${post.id})}'|" onclick="location.href='post.html'">
+        <tr th:each="post : ${posts}" th:onclick="|location.href='@{/{postId}(postId=${post.id})}'|"
+            onclick="location.href='post.html'">
             <td th:text="${post.id}">23523</td>
             <td th:text="${post.title}">This is Lorem ipsum</td>
             <td th:text="${post.content}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem
@@ -29,9 +30,12 @@
         </tr>
         </tbody>
     </table>
-    <button type="button"
-            th:onclick="|location.href='@{/new}'|"
-            onclick="location.href='newForm.html'">글쓰기</button>
+    <div class="buttons">
+        <button type="button"
+                th:onclick="|location.href='@{/new}'|"
+                onclick="location.href='newForm.html'">글쓰기
+        </button>
+    </div>
 </div>
 </body>
 </html>

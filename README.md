@@ -17,11 +17,13 @@
 → 처음에 생각이 안나서 검색해서 복붙함. MVC패턴에서 Controller, Service, Repository 각 계층에서 어떤 클래스를 매개변수로 받고 어떤 클래스로 반환해야하는지 정립이 안되어있음. 또한
 스트림을 자주 사용하지 않다보니 사용방법을 까먹어서 스트림 부분 다시 정리해야할듯.
 
-️❎ update 기능 구현해야됨
-
 ️❎ 예외처리 안됨 → 제목 혹은 내용 없으면 경고창 띄우기
 
 ️❎ 공통로직 처리필요 → 작성시간 표시 등
+
+❌ update 기능 구현하면서 Setter 프로퍼티 사용  
+→ 생성자 대신 `builder`패턴 사용, `setter`프로퍼티 지양, domain, dao, dto 클래스에 `setter`프로퍼티 삭제, `builder`패턴 적용. 그런데 `PostRepository`에서
+update 부분 어떻게 처리할지 모르곘음.
 
 ❌ `@Lob`, `@Entity` 어노테이션 사용제한  
 → 다양한 예제에서 위의 어노테이션을 사용하는데, 이는 Spring Data JPA를 사용해야함. 아직 잘 모르니 공부하고 사용할 예정.
@@ -29,8 +31,7 @@
 ❌ 데이터베이스 어떤걸로 사용할지 못 정함    
 → Spring Data 공부가 부족해서 일단 메모리에 저장하는 방식으로 직접구현.
 
-❌ 생성자 대신 `builder`패턴 사용, `setter`프로퍼티 지양   
-→ domain, dao, dto 클래스에 `setter`프로퍼티 삭제, `builder`패턴 적용. 그런데 `PostRepository`에서 update 부분 어떻게 처리할지 모르곘음.
+
 
 
 </details>

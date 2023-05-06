@@ -18,10 +18,18 @@
             tempore voluptatibus voluptatum?</p>
     </div>
     <hr>
-    <button type="button"
-            th:onclick="|location.href='@{/}'|"
-            onclick="location.href='index.html'">목록
-    </button>
+    <div class="buttons">
+        <button type="button"
+                th:onclick="|location.href='@{/{postId}/edit(postId=${post.id})}'|"
+                onclick="location.href='editForm.html'">수정
+        </button>
+        <button type="button"
+                th:onclick="|location.href='@{/}'|"
+                onclick="location.href='index.html'">목록
+        </button>
+
+    </div>
+
 </div>
 </body>
 </html>

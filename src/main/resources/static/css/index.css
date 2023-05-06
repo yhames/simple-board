@@ -33,6 +33,11 @@ button {
     cursor: pointer;
 }
 
+.buttons {
+    display: flex;
+    justify-content: right;
+}
+
 .container {
     max-width: 700px;
     margin: 0 auto;

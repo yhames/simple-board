@@ -33,9 +33,10 @@ public class PostRepository {
         return new ArrayList<>(store.values());
     }
 
+
+    // TODO : Setter 프로퍼티
     public void update(Long postId, PostEdit postEdit) {
         Post findPost = store.get(postId);
-        // TODO : setter 프로퍼티 수정
         findPost.setTitle(postEdit.getTitle());
         findPost.setContent(postEdit.getContent());
     }

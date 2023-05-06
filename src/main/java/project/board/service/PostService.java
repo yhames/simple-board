@@ -22,11 +22,11 @@ public class PostService {
     }
 
     public PostResponse findById(Long postId) {
-        Post findPost = postRepository.findById(postId);
+        Post post = postRepository.findById(postId);
         return PostResponse.builder()
-                .id(findPost.getId())
-                .title(findPost.getTitle())
-                .content(findPost.getContent())
+                .id(post.getId())
+                .title(post.getTitle())
+                .content(post.getContent())
                 .build();
     }
 
