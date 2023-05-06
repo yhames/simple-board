@@ -1,7 +1,11 @@
 /* new.css */
 
+h1{
+    margin-top: 50px;
+}
+
 .form-container {
-    max-width: 500px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
@@ -21,6 +25,7 @@ textarea {
     font-size: 16px;
     border-radius: 4px;
     border: 1px solid #ccc;
+    resize: none;
 }
 
 button {

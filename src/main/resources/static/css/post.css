@@ -1,0 +1,24 @@
+/* post.css */
+
+h1{
+    margin-top: 50px;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.content {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>새 글 작성</title>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/post.css}"
+          href="../static/css/post.css">
+</head>
+<body>
+<div class="container">
+    <div class="title">
+        <h1 name="title" th:text="${post.title}">this is Lorem ipsum</h1>
+    </div>
+    <div class="content" th:text="${post.content}">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, architecto dignissimos eius eveniet facere
+            facilis hic iste magnam minima molestias mollitia perferendis perspiciatis quas quidem rem repudiandae
+            tempore voluptatibus voluptatum?</p>
+    </div>
+    <hr>
+    <button type="button"
+            th:onclick="|location.href='@{/}'|"
+            onclick="location.href='index.html'">목록
+    </button>
+</div>
+</body>
+</html>

@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
 
 //@Entity   // TODO : Spring Data JPA 공부하고 사용 예정
 @Getter

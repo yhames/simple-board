@@ -7,10 +7,15 @@
 <summary>20230506</summary>
 
 ✅ `project.board`의 하위가 아닌 `project`의 하위에 파일을 생성해서 `ComponentScan`이 안됨  
-→ `@SpringBootApplication`에 `@CompenentScan` 포함되어있음. `@ComponentScan`의 기본 설정값은 해당 클래스의 패키지, `BoardApplication의` 패키지는 `package project.board`이므로 `proejct.board`에 파일을 작성해야 자동 컴포넌트 스캔이 됨.
+→ `@SpringBootApplication`에 `@CompenentScan` 포함되어있음. `@ComponentScan`의 기본 설정값은 해당 클래스의 패키지, `BoardApplication의`
+패키지는 `package project.board`이므로 `proejct.board`에 파일을 작성해야 자동 컴포넌트 스캔이 됨.
 
-❌ Thymeleaf 템플릿을 생성해야하는데 귀찮아서 ChatGPT에 작성해달라고 함.  
-→ 작성된 템플릿이 괜찮기는 한데 일부 수정해야할 필요 있음. 추후에 화면부분이 깔끔하게 보일 수 있도록 다시 수정할 예정
+✅ Thymeleaf 템플릿을 생성해야하는데 귀찮아서 ChatGPT에 작성해달라고 함.  
+→ 작성된 템플릿이 괜찮기는 한데 일부 수정해야할 필요가 있어서 수정함. 추후에 화면부분이 깔끔하게 보일 수 있도록 다시 수정할 예정
+
+✅ `PostService`에서 `List<Post>`를 `List<PostResponse>`로 변환해야하는 작업에 `Stream.map()` 사용  
+→ 처음에 생각이 안나서 검색해서 복붙함. MVC패턴에서 Controller, Service, Repository 각 계층에서 어떤 클래스를 매개변수로 받고 어떤 클래스로 반환해야하는지 정립이 안되어있음. 또한
+스트림을 자주 사용하지 않다보니 사용방법을 까먹어서 스트림 부분 다시 정리해야할듯.
 
 ❌ `@Lob`, `@Entity` 어노테이션 사용제한  
 → 다양한 예제에서 위의 어노테이션을 사용하는데, 이는 Spring Data JPA를 사용해야함. 아직 잘 모르니 공부하고 사용할 예정.

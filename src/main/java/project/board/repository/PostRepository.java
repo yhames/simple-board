@@ -16,14 +16,13 @@ public class PostRepository {
     private static final Map<Long, Post> store = new ConcurrentHashMap<>();
     private static Long sequence = 0L;
 
-    public Post save(PostCreate postCreate) {
+    public void save(PostCreate postCreate) {
         Post post = Post.builder()
                 .id(++sequence)
                 .title(postCreate.getTitle())
                 .content(postCreate.getContent())
                 .build();
         store.put(post.getId(), post);
-        return post;
     }
 
     public Post findById(Long postId) {
@@ -34,8 +33,9 @@ public class PostRepository {
         return new ArrayList<>(store.values());
     }
 
-    public void update(Long itemId, PostEdit postEdit) {
-        Post findPost = store.get(itemId);
+    public void update(Long postId, PostEdit postEdit) {
+        Post findPost = store.get(postId);
+        // TODO : setter 프로퍼티 수정
         findPost.setTitle(postEdit.getTitle());
         findPost.setContent(postEdit.getContent());
     }
