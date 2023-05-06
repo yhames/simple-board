@@ -45,4 +45,6 @@ public class PostController {
         postService.save(postCreate);
         return "redirect:/";
     }
+
+    // TODO : Update 기능 추가
 }
