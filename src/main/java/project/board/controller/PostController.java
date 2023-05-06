@@ -40,7 +40,6 @@ public class PostController {
 
     @PostMapping("/new")
     public String save(@ModelAttribute PostCreate postCreate) {
-        log.info("PostController.save() postCreate={}", postCreate.toString());
         postService.save(postCreate);
         return "redirect:/";
     }
@@ -55,8 +54,13 @@ public class PostController {
 
     @PostMapping("/{postId}/edit")
     public String update(@PathVariable("postId") Long postId, @ModelAttribute PostEdit postEdit) {
-        log.info("PostController.update() postEdit={}", postEdit.toString());
         postService.update(postId, postEdit);
         return "redirect:/{postId}";
+    }
+
+    @DeleteMapping("/{postId}/delete")
+    public String delete(@PathVariable("postId") Long postId) {
+        postService.delete(postId);
+        return "redirect:/";
     }
 }

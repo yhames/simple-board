@@ -40,4 +40,8 @@ public class PostRepository {
         findPost.setTitle(postEdit.getTitle());
         findPost.setContent(postEdit.getContent());
     }
+
+    public void delete(Long postId) {
+        store.remove(postId);
+    }
 }
