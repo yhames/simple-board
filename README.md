@@ -1,1 +1,22 @@
 # simple-board
+
+## Dev-Notes
+
+### 2023.5.6.
+
+#### Thymeleaf 템플릿을 생성해야하는데 귀찮아서 ChatGPT에 작성해달라고 함.
+→ 작성된 템플릿이 괜찮기는 한데 일부 수정해야할 필요 있음. 추후에 화면부분이 깔끔하게 보일 수 있도록 다시 수정할 예정
+
+#### `project.board`의 하위가 아닌 `project`의 하위에 파일을 생성해서 `ComponentScan`이 안됨  
+→ `@SpringBootApplication`에 `@CompenentScan` 포함되어있음. `@ComponentScan`의 기본 설정값은 해당 클래스의 패키지,
+`BoardApplication의` 패키지는 `package project.board`이므로 `proejct.board`에 파일을 작성해야 자동 컴포넌트 스캔이 됨.
+
+#### `@Lob`, `@Entity` 어노테이션 사용제한
+→ 다양한 예제에서 위의 어노테이션을 사용하는데, 이는 Spring Data JPA를 사용해야함.
+아직 잘 모르니 공부하고 사용할 예정.
+
+#### 데이터베이스 어떤걸로 사용할지 못정함
+→ Spring Data 공부가 부족해서 일단 메모리에 저장하는 방식으로 직접구현.
+
+#### 생성자 대신 `builder`패턴 사용, `setter`프로퍼티 지양
+→ domain, dao, dto 클래스에 `setter`프로퍼티 삭제, `builder`패턴 적용. 그런데 `PostRepository`에서 update 부분 어떻게 처리할지 모르곘음.
