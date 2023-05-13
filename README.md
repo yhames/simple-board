@@ -51,7 +51,7 @@ update 부분 어떻게 처리할지 모르곘음.
 ✅ update 기능 구현하면서 Setter 프로퍼티 사용  
 → setter 대신 변경의 의도를 알 수 있는 메서드(`changePost()`)를 사용
 
-✅ Repository 인터페이스에서 PostCreate 사용
+✅ Repository 인터페이스에서 PostCreate 사용  
 → PostCreate를 Post로 가공하는 것을 service 계층에 옮겨서 repository가 post를 받을 수 있도록 수정
 
 </details>
