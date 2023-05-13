@@ -3,7 +3,7 @@ package project.board.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import project.board.domain.Post;
-import project.board.repository.PostRepository;
+import project.board.repository.MemoryPostRepository;
 import project.board.request.PostCreate;
 import project.board.request.PostEdit;
 import project.board.response.PostResponse;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PostService {
 
-    private final PostRepository postRepository;
+    private final MemoryPostRepository postRepository;
 
     public void save(PostCreate postCreate) {
         postRepository.save(postCreate);
