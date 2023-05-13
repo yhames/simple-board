@@ -1,16 +1,16 @@
 package project.board.repository;
 
 import project.board.domain.Post;
-import project.board.request.PostCreate;
 import project.board.request.PostEdit;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PostRepository {
 
     void save(Post post);
 
-    Post findById(Long postId);
+    Optional<Post> findById(Long postId);
 
     List<Post> findAll();
 

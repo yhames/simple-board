@@ -9,6 +9,8 @@ import project.board.request.PostEdit;
 import project.board.response.PostResponse;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,7 +28,8 @@ public class PostService {
     }
 
     public PostResponse findById(Long postId) {
-        Post post = postRepository.findById(postId);
+        Optional<Post> findPost = postRepository.findById(postId);
+        Post post = findPost.orElseThrow(() -> new NoSuchElementException());
         return PostResponse.builder()
                 .id(post.getId())
                 .title(post.getTitle())

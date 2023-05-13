@@ -8,6 +8,7 @@ import project.board.request.PostEdit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Repository // TODO: 데이터베이스 결정 후 바꿀 예정
@@ -21,8 +22,8 @@ public class MemoryPostRepository implements PostRepository {
         store.put(post.getId(), post);
     }
 
-    public Post findById(Long postId) {
-        return store.get(postId);
+    public Optional<Post> findById(Long postId) {
+        return Optional.ofNullable(store.get(postId));
     }
 
     public List<Post> findAll() {
