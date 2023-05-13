@@ -19,6 +19,12 @@
     </div>
     <hr>
     <div class="buttons">
+        <form action="index" th:action="@{/{postId}/delete(postId=${post.id})}" th:method="delete">
+            <input type="hidden" name="_method" value="delete"/>
+            <button type="submit" style="background-color: palevioletred">
+                삭제
+            </button>
+        </form>
         <button type="button"
                 th:onclick="|location.href='@{/{postId}/edit(postId=${post.id})}'|"
                 onclick="location.href='editForm.html'">수정
