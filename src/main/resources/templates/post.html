@@ -22,9 +22,7 @@
         <form action="index" style="margin-right: auto"
               th:action="@{/{postId}/delete(postId=${post.id})}" th:method="delete">
             <!-- <input type="hidden" name="_method" value="delete"/> 자동생성 -->
-            <button type="submit" style="background-color: palevioletred">
-                삭제
-            </button>
+            <button type="submit" style="background-color: palevioletred">삭제</button>
         </form>
         <button type="button"
                 th:onclick="|location.href='@{/{postId}/edit(postId=${post.id})}'|"
