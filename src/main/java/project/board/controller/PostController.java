@@ -44,7 +44,6 @@ public class PostController {
         return "redirect:/";
     }
 
-    // TODO : Update 기능 추가
     @GetMapping("/{postId}/edit")
     public String editForm(@PathVariable("postId") Long postId, Model model) {
         PostResponse post = postService.findById(postId);
