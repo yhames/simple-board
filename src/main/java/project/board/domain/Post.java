@@ -1,14 +1,9 @@
 package project.board.domain;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 
-//@Entity   // TODO : Spring Data JPA 공부하고 사용 예정
 @Getter
-@Setter
 public class Post {
 
     private Long id;
@@ -16,8 +11,13 @@ public class Post {
     private String content;
 
     @Builder
-    public Post(Long id, String title, String content) {
+    public Post(Long id, String title, String content) {    // 빌더패턴 적용
         this.id = id;
+        this.title = title;
+        this.content = content;
+    }
+
+    public void changePost(String title, String content) {
         this.title = title;
         this.content = content;
     }

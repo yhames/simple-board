@@ -23,11 +23,12 @@
 
 ️❎ 공통로직 처리필요 → 작성시간 표시 등
 
-❌ update 기능 구현하면서 Setter 프로퍼티 사용  
+✅ update 기능 구현하면서 Setter 프로퍼티 사용  
 → 생성자 대신 `builder`패턴 사용, `setter`프로퍼티 지양, domain, dao, dto 클래스에 `setter`프로퍼티 삭제, `builder`패턴 적용. 그런데 `PostRepository`에서
 update 부분 어떻게 처리할지 모르곘음.
+→ setter 대신 변경의 의도를 알 수 있는 메서드(`changePost()`)를 사용
 
-❌ delete 기능 어떻게 구현하는지 모르겠음  
+❌ thymeleaf에서 delete 기능 어떻게 구현하는지 모르겠음
 
 ❌ thymeleaf에서 http 요청 보내는 방법 모르겠음  
 → 지금까지 사용한 방법은 href 혹은 form 태그였는데, 이 두가지는 get, post 밖에 구현이 안된다. delete나 put, patch를 구현하려면 어떻게 해야하는지 모르겠다.
@@ -42,5 +43,16 @@ update 부분 어떻게 처리할지 모르곘음.
 
 
 </details>
+
+<details>
+
+<summary>20230513</summary>
+
+✅ update 기능 구현하면서 Setter 프로퍼티 사용  
+→ setter 대신 변경의 의도를 알 수 있는 메서드(`changePost()`)를 사용
+
+</details>
+
+
 
 

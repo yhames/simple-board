@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Repository // TODO: 데이터베이스 결정 후 바꿀 예정
-public class PostRepository {
+public class MemoryPostRepository implements PostRepository {
 
     private static final Map<Long, Post> store = new ConcurrentHashMap<>();
     private static Long sequence = 0L;
@@ -33,12 +33,9 @@ public class PostRepository {
         return new ArrayList<>(store.values());
     }
 
-
-    // TODO : Setter 프로퍼티
     public void update(Long postId, PostEdit postEdit) {
         Post findPost = store.get(postId);
-        findPost.setTitle(postEdit.getTitle());
-        findPost.setContent(postEdit.getContent());
+        findPost.changePost(postEdit.getTitle(), postEdit.getContent());
     }
 
     public void delete(Long postId) {
