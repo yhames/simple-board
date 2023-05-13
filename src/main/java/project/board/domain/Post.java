@@ -21,4 +21,8 @@ public class Post {
         this.title = title;
         this.content = content;
     }
+
+    public void createId(Long id) {
+        this.id = id;
+    }
 }

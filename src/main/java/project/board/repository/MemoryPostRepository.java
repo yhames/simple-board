@@ -16,12 +16,8 @@ public class MemoryPostRepository implements PostRepository {
     private static final Map<Long, Post> store = new ConcurrentHashMap<>();
     private static Long sequence = 0L;
 
-    public void save(PostCreate postCreate) {
-        Post post = Post.builder()
-                .id(++sequence)
-                .title(postCreate.getTitle())
-                .content(postCreate.getContent())
-                .build();
+    public void save(Post post) {
+        post.createId(++sequence);
         store.put(post.getId(), post);
     }
 

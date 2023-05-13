@@ -18,7 +18,11 @@ public class PostService {
     private final MemoryPostRepository postRepository;
 
     public void save(PostCreate postCreate) {
-        postRepository.save(postCreate);
+        Post post = Post.builder()
+                .title(postCreate.getTitle())
+                .content(postCreate.getContent())
+                .build();
+        postRepository.save(post);
     }
 
     public PostResponse findById(Long postId) {
