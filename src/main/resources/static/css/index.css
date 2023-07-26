@@ -1,0 +1,20 @@
+body {
+    background-color: lightslategray;
+}
+
+indicator {
+    background-color: olivedrab;
+}
+
+header {
+    background-color: palevioletred;
+}
+
+nav {
+    background-color: mediumorchid;
+}
+
+
+footer {
+    background-color: darkcyan;
+}

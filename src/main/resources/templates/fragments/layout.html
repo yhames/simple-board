@@ -1,0 +1,30 @@
+<!doctype html>
+<html th:fragment="layout (title, section)" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:replace="${title}">Simple-Board</title>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<header>
+    <h2>SIMPLE BOARD</h2>
+</header>
+
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+<body>
+
+<section th:replace="${section}"></section>
+
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery-3.7.0.js"></script>
+</body>
+
+<footer>
+    <p>서비스 이용약관 | 개인정보 보호정책 | 청소년 보호정책</p>
+    <p>Copyright ©BOARD All rights reserved.</p>
+</footer>
+
+</html>
