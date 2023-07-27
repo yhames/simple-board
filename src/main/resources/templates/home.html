@@ -1,0 +1,36 @@
+<!doctype html>
+<html th:replace="~{fragments/layout :: layout (~{::title}, ~{::section})}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SimpleBoard :: Home</title>
+</head>
+<body>
+<section>
+    <table class="table table-bordered text-center">
+        <thead>
+        <tr>
+            <th class="col-md-1">번호</th>
+            <th class="col-md-7">제목</th>
+            <th class="col-md-2">글쓴이</th>
+            <th class="col-md-1">작성일</th>
+            <th class="col-md-1">조회수</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="post : ${posts}">
+            <td th:text="${post.id}">글번호</td>
+            <td class="text-start">
+                [<span th:text="${post.category}">분류</span>]
+                <span th:text="${post.title}">제목</span>
+                [<span th:text="${post.countOfComments}">댓글수</span>]
+            </td>
+            <td th:text="${post.writer}">글쓴이</td>
+            <td class="text-size-sub" th:text="${post.createdDate}">생성일시</td>
+            <td th:text="${post.countOfViews}">조회수</td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>
