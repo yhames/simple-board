@@ -21,7 +21,7 @@
         <tr th:each="post : ${posts}">
             <td th:text="${post.id}">글번호</td>
             <td class="text-start">
-                [<span th:text="${post.category}">분류</span>]
+                [<span th:text="${post.board}">게시판</span>]
                 <span th:text="${post.title}">제목</span>
                 [<span th:text="${post.countOfComments}">댓글수</span>]
             </td>
@@ -31,6 +31,7 @@
         </tr>
         </tbody>
     </table>
+    <a class="btn btn-primary" th:href="@{/post/write}">글쓰기</a>
 </section>
 </body>
 </html>

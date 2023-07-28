@@ -1,9 +1,7 @@
 package com.example.simpleboard.response;
 
 import com.example.simpleboard.domain.Post;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -14,7 +12,7 @@ public class PostResponse {
 
     private String writer;
 
-    private String category;
+    private String board;
 
     private String title;
 
@@ -31,7 +29,7 @@ public class PostResponse {
     public PostResponse(Post post) {
         this.id = post.getId();
         this.writer = post.getWriter();
-        this.category = post.getCategory();
+        this.board = post.getBoard();
         this.title = post.getTitle();
         this.content = post.getContent();
         this.createdDate = post.getCreatedDate();

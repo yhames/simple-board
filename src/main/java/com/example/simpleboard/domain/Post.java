@@ -1,5 +1,6 @@
 package com.example.simpleboard.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +14,7 @@ public class Post {
 
     private String writer;
 
-    private String category;
+    private String board;
 
     private String title;
 
