@@ -1,16 +1,52 @@
 package com.example.simpleboard.controller;
 
+import com.example.simpleboard.domain.User;
+import com.example.simpleboard.request.PostRequest;
+import com.example.simpleboard.response.UserResponse;
+import com.example.simpleboard.service.PostService;
+import com.example.simpleboard.service.UserService;
+import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Field;
+import java.util.Optional;
+
+@Slf4j
 @Controller
 @RequestMapping("/post")
+@RequiredArgsConstructor
 public class PostController {
 
+    private final PostService postService;
+    private final UserService userService;
+
     @GetMapping("/write")
-    public String postAddForm() {
-        return "post/postAddForm";
+    public String postCreateForm(HttpSession session) {
+        // session에 userId가 없으면
+        Long userId = (Long) session.getAttribute("userId");
+        if (userId == null) {
+            return "user/loginForm";
+        }
+
+        // session의 userId가 등록된 유저가 아니면
+        Optional<User> findUser = userService.findById(userId);
+        if (findUser.isEmpty()) {
+            return "user/loginForm";
+        }
+
+        return "post/postCreateForm";
+    }
+
+    @PostMapping("/write")
+    public String postCreate(@ModelAttribute PostRequest postRequest) {
+        postService.insert(postRequest);
+        return "redirect:/";
     }
 
     @GetMapping("/edit")
@@ -18,8 +54,9 @@ public class PostController {
         return "post/postEditForm";
     }
 
-    @GetMapping()
-    public String postDetailForm() {
+    @GetMapping("/{id}")
+    public String postDetailForm(@PathVariable long id, Model model) {
+        model.addAttribute("post", postService.findById(id));
         return "post/postDetailForm";
     }
 

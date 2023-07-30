@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html th:replace="~{fragments/layout :: layout (~{::title}, ~{::section})}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SimpleBoard :: LoginForm</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<section>
+    <form th:action="@{/user/login}" th:method="POST">
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="아이디" th:name="name">
+            <input type="password" class="form-control" placeholder="비밀번호" th:name="password">
+            <button class="btn btn-primary" type="submit">로그인</button>
+        </div>
+    </form>
+</section>
+</body>
+</html>

@@ -3,10 +3,26 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Title</title>
+    <meta charset="UTF-8">
 </head>
 <body>
 <section>
-    this is detail form
+    <div>
+        <div th:text="'['+${post.board}+']'">분류</div>
+        <h2 th:text="${post.title}">제목</h2>
+    </div>
+    <div style="display: flex">
+        <div th:text="'작성자 : '+${post.writer}" style="margin-right: 20px">작성자</div>
+        <div th:text="'수정일시 : '+${post.updatedDate}" style="margin-right: 20px">수정일시</div>
+        <div th:text="'조회수 : '+${post.countOfViews}" style="margin-right: 20px">조회수</div>
+    </div>
+    <hr>
+    <div th:text="${post.content}">내용</div>
+    <hr>
+    <div style="display: flex">
+        <div>댓글</div>
+        <div th:text="'['+${post.countOfComments}+']'">0</div>
+    </div>
 </section>
 </body>
 </html>

@@ -2,8 +2,8 @@
 <html th:replace="~{fragments/layout :: layout (~{::title}, ~{::section})}"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>SimpleBoard :: Home</title>
+    <meta charset="UTF-8">
 </head>
 <body>
 <section>
@@ -21,9 +21,11 @@
         <tr th:each="post : ${posts}">
             <td th:text="${post.id}">글번호</td>
             <td class="text-start">
-                [<span th:text="${post.board}">게시판</span>]
-                <span th:text="${post.title}">제목</span>
-                [<span th:text="${post.countOfComments}">댓글수</span>]
+                <a href="#" th:href="@{/post/{id}(id=${post.id})}">
+                    <span th:text="'['+${post.board}+']'">게시판</span>
+                    <span th:text="${post.title}">제목</span>
+                    <span th:text="'['+${post.countOfComments}+']'">댓글수</span>
+                </a>
             </td>
             <td th:text="${post.writer}">글쓴이</td>
             <td class="text-size-sub" th:text="${post.createdDate}">생성일시</td>
@@ -31,7 +33,7 @@
         </tr>
         </tbody>
     </table>
-    <a class="btn btn-primary" th:href="@{/post/write}">글쓰기</a>
+    <a class="btn btn-primary" href="#" th:href="@{/post/write}">글쓰기</a>
 </section>
 </body>
 </html>

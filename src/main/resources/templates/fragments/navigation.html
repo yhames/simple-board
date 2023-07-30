@@ -2,13 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <nav th:fragment="navigation">
-  <a href="#">HOME</a>
+    <a href="#" th:href="@{/}">HOME</a>
 
-  <a href="#">category-1</a>
-  <a href="#">category-2</a>
-  <a href="#">category-3</a>
-  <a href="#">category-4</a>
-  <a href="#">category-5</a>
+    <a href="#">시</a>
+    <a href="#">수필</a>
+    <a href="#">소설</a>
+    <a href="#">기사</a>
+    <a href="#">논문</a>
+
+    <div th:if="${session.userId==null}">
+        <a href="#" th:href="@{/user/login}" class="btn btn-primary">로그인</a>
+    </div>
+
+    <div th:if="${session.userId!=null}">
+        <a href="#" th:href="@{/user/logout}" class="btn btn-primary">로그아웃</a>
+    </div>
 </nav>
 
 </html>

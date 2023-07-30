@@ -57,7 +57,8 @@ public class JdbcPostRepository implements PostRepository {
                 + " LEFT OUTER JOIN USER as u"
                 + " ON p.user_id = u.id"
                 + " LEFT OUTER JOIN BOARD as b"
-                + " ON p.board_id = b.id";
+                + " ON p.board_id = b.id"
+                + " ORDER BY p.id DESC";
         return jdbcTemplate.query(sql, rowMapper());
     }
 
