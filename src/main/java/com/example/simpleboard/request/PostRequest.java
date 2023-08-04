@@ -2,10 +2,12 @@ package com.example.simpleboard.request;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 public class PostRequest {
 
     private long userId;
@@ -16,6 +18,8 @@ public class PostRequest {
 
     private String content;
 
+    public PostRequest() {
+    }
 
     @Builder
     public PostRequest(long userId, long boardId, String title, String content) {
