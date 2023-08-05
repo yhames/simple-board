@@ -53,18 +53,15 @@ public class PostController {
     @PostMapping("/write")
     public String postCreate(@ModelAttribute PostRequest postRequest, BindingResult bindingResult) {
         if (postRequest.getBoardId() <= 0) {
-            bindingResult.addError(new FieldError("postRequest", "boardId", postRequest.getBoardId(),
-                    false, new String[]{"post.empty.boardId"}, null, null));
+            bindingResult.rejectValue("boardId", "empty");
         }
 
         if (postRequest.getTitle() == null || postRequest.getTitle().isBlank()) {
-            bindingResult.addError(new FieldError("postRequest", "title", postRequest.getTitle(),
-                    false, new String[]{"post.empty.title"}, null, null));
+            bindingResult.rejectValue("title", "empty");
         }
 
         if (postRequest.getContent() == null || postRequest.getContent().isBlank()) {
-            bindingResult.addError(new FieldError("postRequest", "content", postRequest.getContent(),
-                    false, new String[]{"post.empty.content"}, null, null));
+            bindingResult.rejectValue("content", "empty");
         }
 
         // 검증 실패
