@@ -51,27 +51,25 @@ public class PostController {
     }
 
     @PostMapping("/write")
-    public String postCreate(@ModelAttribute PostRequest postRequest, Model model) {
-        // TODO : BindingResult 처리
-
-        Map<String, String> errors = new HashMap<>();   // Map<필드, 메시지>
-
+    public String postCreate(@ModelAttribute PostRequest postRequest, BindingResult bindingResult) {
         if (postRequest.getBoardId() <= 0) {
-            errors.put("boardId", "게시판을 선택해주세요.");
+            bindingResult.addError(new FieldError("postRequest", "boardId", postRequest.getBoardId(),
+                    false, new String[]{"post.empty.boardId"}, null, null));
         }
 
         if (postRequest.getTitle() == null || postRequest.getTitle().isBlank()) {
-            errors.put("title", "제목을 입력해주세요.");
+            bindingResult.addError(new FieldError("postRequest", "title", postRequest.getTitle(),
+                    false, new String[]{"post.empty.title"}, null, null));
         }
 
         if (postRequest.getContent() == null || postRequest.getContent().isBlank()) {
-            errors.put("content", "내용을 입력해주세요.");
+            bindingResult.addError(new FieldError("postRequest", "content", postRequest.getContent(),
+                    false, new String[]{"post.empty.content"}, null, null));
         }
 
         // 검증 실패
-        if (!errors.isEmpty()) {
-            log.info("validation failed={}", errors);
-            model.addAttribute("errors", errors);
+        if (bindingResult.hasErrors()) {
+            log.info("validation failed={}", bindingResult);
             return "post/postCreateForm";
         }
 

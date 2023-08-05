@@ -16,17 +16,17 @@
                 <option value="2">수필</option>
                 <option value="3">소설</option>
             </select>
-            <div th:if="${errors?.containsKey('boardId')}">
-                <p class="field-error" th:text="${errors['boardId']}">게시판 오류 메시지</p>
+            <div th:errors="*{boardId}" th:errorclass="field-error">
+                게시판 오류 메시지
             </div>
 
             <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="제목">
-            <div th:if="${errors?.containsKey('title')}">
-                <p class="field-error" th:text="${errors['title']}">제목 오류 메시지</p>
+            <div th:errors="*{title}" th:errorclass="field-error">
+                제목 오류 메시지
             </div>
             <textarea type="text" class="form-control" id="content" th:field="*{content}" rows="10"></textarea>
-            <div th:if="${errors?.containsKey('content')}">
-                <p class="field-error" th:text="${errors['content']}">내용 오류 메시지</p>
+            <div th:errors="*{content}" th:errorclass="field-error">
+                내용 오류 메시지
             </div>
             <button class="btn btn-primary createPost" type="submit">완료</button>
         </div>

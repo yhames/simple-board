@@ -27,3 +27,8 @@ footer {
     /*background-color: darkcyan;*/
     text-align: center;
 }
+
+.field-error {
+    border-color: orangered;
+    color: darkred;
+}
