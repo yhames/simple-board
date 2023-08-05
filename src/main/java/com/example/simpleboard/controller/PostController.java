@@ -53,9 +53,7 @@ public class PostController {
 
     @PostMapping("/write")
     public String postCreate(@ModelAttribute PostRequest postRequest, BindingResult bindingResult) {
-        if (postRequest.getBoardId() <= 0) {
-            bindingResult.rejectValue("boardId", "empty");
-        }
+        ValidationUtils.rejectIfEmptyOrWhitespace(bindingResult, "boardId", "empty");
 
         ValidationUtils.rejectIfEmptyOrWhitespace(bindingResult, "title", "empty");
 

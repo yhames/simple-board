@@ -12,7 +12,7 @@ public class PostRequest {
 
     private long userId;
 
-    private long boardId;
+    private Long boardId;
 
     private String title;
 
