@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
@@ -56,13 +57,9 @@ public class PostController {
             bindingResult.rejectValue("boardId", "empty");
         }
 
-        if (postRequest.getTitle() == null || postRequest.getTitle().isBlank()) {
-            bindingResult.rejectValue("title", "empty");
-        }
+        ValidationUtils.rejectIfEmptyOrWhitespace(bindingResult, "title", "empty");
 
-        if (postRequest.getContent() == null || postRequest.getContent().isBlank()) {
-            bindingResult.rejectValue("content", "empty");
-        }
+        ValidationUtils.rejectIfEmptyOrWhitespace(bindingResult, "content", "empty");
 
         // 검증 실패
         if (bindingResult.hasErrors()) {
