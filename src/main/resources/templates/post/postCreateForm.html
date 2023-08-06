@@ -7,7 +7,7 @@
 </head>
 <body>
 <section>
-    <form class="createForm" th:action="@{/post/write}" th:object="${postRequest}" th:method="POST">
+    <form class="createForm" th:action="@{/post/write}" th:object="${postCreate}" th:method="POST">
         <div class="mb-3">
             <input type="hidden" id="userId" th:field="*{userId}">
             <select id="boardId" th:field="*{boardId}" class="form-select">

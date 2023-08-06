@@ -38,10 +38,10 @@ public class PostController {
             return "user/loginForm";
         }
 
-        PostCreate postRequest = PostCreate.builder()
+        PostCreate postCreate = PostCreate.builder()
                 .userId(userId)
                 .build();
-        model.addAttribute("postRequest", postRequest);
+        model.addAttribute("postCreate", postCreate);
         return "post/postCreateForm";
     }
 
