@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
@@ -32,6 +34,11 @@ public class PostController {
     private final UserService userService;
 
     private final PostRequestValidator postRequestValidator;
+
+    @InitBinder
+    public void init(WebDataBinder webDataBinder) {
+        webDataBinder.addValidators(postRequestValidator);
+    }
 
     @GetMapping("/write")
     public String postCreateForm(HttpSession session, Model model) {
@@ -55,9 +62,7 @@ public class PostController {
     }
 
     @PostMapping("/write")
-    public String postCreate(@ModelAttribute PostRequest postRequest, BindingResult bindingResult) {
-
-        postRequestValidator.validate(postRequest, bindingResult);
+    public String postCreate(@Validated @ModelAttribute PostRequest postRequest, BindingResult bindingResult) {
 
         // 검증 실패
         if (bindingResult.hasErrors()) {
