@@ -1,7 +1,7 @@
 package com.example.simpleboard.controller;
 
 import com.example.simpleboard.domain.User;
-import com.example.simpleboard.request.PostRequest;
+import com.example.simpleboard.request.PostCreate;
 import com.example.simpleboard.service.PostService;
 import com.example.simpleboard.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -38,7 +38,7 @@ public class PostController {
             return "user/loginForm";
         }
 
-        PostRequest postRequest = PostRequest.builder()
+        PostCreate postRequest = PostCreate.builder()
                 .userId(userId)
                 .build();
         model.addAttribute("postRequest", postRequest);
@@ -46,7 +46,7 @@ public class PostController {
     }
 
     @PostMapping("/write")
-    public String postCreate(@Validated @ModelAttribute PostRequest postRequest, BindingResult bindingResult) {
+    public String postCreate(@Validated @ModelAttribute PostCreate postCreate, BindingResult bindingResult) {
         // 검증 실패
         if (bindingResult.hasErrors()) {
             log.info("validation failed={}", bindingResult);
@@ -54,7 +54,7 @@ public class PostController {
         }
 
         // 검증 성공
-        postService.insert(postRequest);
+        postService.insert(postCreate);
         return "redirect:/";
     }
 

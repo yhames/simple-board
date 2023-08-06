@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PostRequest {
+public class PostCreate {
 
     private long userId;
 
@@ -21,11 +21,11 @@ public class PostRequest {
     @NotBlank
     private String content;
 
-    public PostRequest() {
+    public PostCreate() {
     }
 
     @Builder
-    public PostRequest(long userId, long boardId, String title, String content) {
+    public PostCreate(long userId, long boardId, String title, String content) {
         this.userId = userId;
         this.boardId = boardId;
         this.title = title;
