@@ -6,6 +6,7 @@ import com.example.simpleboard.request.PostRequest;
 import com.example.simpleboard.response.UserResponse;
 import com.example.simpleboard.service.PostService;
 import com.example.simpleboard.service.UserService;
+import com.example.simpleboard.validator.PostRequestValidator;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +31,8 @@ public class PostController {
     private final PostService postService;
     private final UserService userService;
 
+    private final PostRequestValidator postRequestValidator;
+
     @GetMapping("/write")
     public String postCreateForm(HttpSession session, Model model) {
         // session에 userId가 없으면
@@ -53,11 +56,8 @@ public class PostController {
 
     @PostMapping("/write")
     public String postCreate(@ModelAttribute PostRequest postRequest, BindingResult bindingResult) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(bindingResult, "boardId", "empty");
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(bindingResult, "title", "empty");
-
-        ValidationUtils.rejectIfEmptyOrWhitespace(bindingResult, "content", "empty");
+        postRequestValidator.validate(postRequest, bindingResult);
 
         // 검증 실패
         if (bindingResult.hasErrors()) {
