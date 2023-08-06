@@ -1,27 +1,18 @@
 package com.example.simpleboard.controller;
 
-import com.example.simpleboard.domain.Category;
 import com.example.simpleboard.domain.User;
 import com.example.simpleboard.request.PostRequest;
-import com.example.simpleboard.response.UserResponse;
 import com.example.simpleboard.service.PostService;
 import com.example.simpleboard.service.UserService;
-import com.example.simpleboard.validator.PostRequestValidator;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 @Slf4j
@@ -32,13 +23,6 @@ public class PostController {
 
     private final PostService postService;
     private final UserService userService;
-
-    private final PostRequestValidator postRequestValidator;
-
-    @InitBinder
-    public void init(WebDataBinder webDataBinder) {
-        webDataBinder.addValidators(postRequestValidator);
-    }
 
     @GetMapping("/write")
     public String postCreateForm(HttpSession session, Model model) {
@@ -63,7 +47,6 @@ public class PostController {
 
     @PostMapping("/write")
     public String postCreate(@Validated @ModelAttribute PostRequest postRequest, BindingResult bindingResult) {
-
         // 검증 실패
         if (bindingResult.hasErrors()) {
             log.info("validation failed={}", bindingResult);
